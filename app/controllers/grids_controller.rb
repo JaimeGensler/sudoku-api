@@ -7,6 +7,10 @@ class GridsController < ApplicationController
         json_response(Grid.find(params[:id]))
     end
 
+    def random
+        json_response(Grid.random)
+    end
+
     def create
         json_response(Grid.create!(grid_params), 201)
     end
