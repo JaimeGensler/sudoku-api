@@ -18,7 +18,7 @@ class GridsController < ApplicationController
         @grid = Grid.find(params[:id])
         if @grid.update!(grid_params)
             render status: 200, json: {
-                message: "This grid (#{@grid.name}) has been updated successfully."
+                message: 'This grid has been updated successfully.'
             }
         end
     end
@@ -26,7 +26,7 @@ class GridsController < ApplicationController
     def destroy
         @grid = Grid.find(params[:id])
         if @grid.destroy!
-            render status: 200, json: {message: "Destroyed grid: #{@grid.name}"}
+            render status: 200, json: {message: 'This grid has been successfully destroyed.'}
         end
     end
 
