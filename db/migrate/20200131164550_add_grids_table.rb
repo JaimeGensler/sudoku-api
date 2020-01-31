@@ -1,9 +1,11 @@
 class AddGridsTable < ActiveRecord::Migration[5.2]
     def change
-        t.string :puzzle_grid
-        t.string :solved_grid
-        t.string :difficulty
+        create_table :grids do |t|
+            t.string :puzzle_grid
+            t.string :solved_grid
+            t.string :difficulty
 
-        t.timestamps
+            t.timestamps
+        end
     end
 end
