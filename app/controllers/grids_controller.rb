@@ -1,31 +1,24 @@
 class GridsController < ApplicationController
     def index
-        @grids = Grid.all
-        json_response(@grids)
+        json_response(Grid.all)
     end
 
     def show
-        @grid = Grid.find(params[:id])
-        json_response(@grid)
+        json_response(Grid.find(params[:id]))
     end
 
     def create
-        @grid = Grid.create!(grid_params)
-        json_response(@grid, 201)
+        json_response(Grid.create!(grid_params), 201)
     end
 
     def update
-        @grid = Grid.find(params[:id])
-        if @grid.update!(grid_params)
-            render status: 200, json: {
-                message: 'This Grid has been updated successfully.'
-            }
+        if Grid.find(params[:id]).update!(grid_params)
+            render status: 200, json: {message: 'This Grid has been updated successfully.'}
         end
     end
 
     def destroy
-        @grid = Grid.find(params[:id])
-        if @grid.destroy!
+        if Grid.find(params[:id]).destroy!
             render status: 200, json: {message: 'This Grid has been successfully destroyed.'}
         end
     end
