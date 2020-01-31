@@ -11,4 +11,13 @@ describe Grid do
         it { should validate_length_of(:puzzle_grid).is_equal_to 81 }
         it { should validate_length_of(:solved_grid).is_equal_to 81 }
     end
+
+    context '(scopes)' do
+        it '.random should return a random grid' do
+            srand(12345)
+            expect(Grid.random).to be_an_instance_of Grid
+            expect(Grid.random.solved_grid).not_to eq(Grid.random.solved_grid)
+            #it's technically possible for this test to fail if it randomly pics the same grid twice in a row, but this is unlikely with a large enough database
+        end
+    end
 end
