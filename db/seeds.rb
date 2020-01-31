@@ -9,9 +9,9 @@ class Seed
     def self.create_grids(count)
         count.times do
             Grid.create!(
-                solved_grid: (rand(1..9).to_s * 81),
-                puzzle_grid: (rand(0...9).to_s * 81),
-                difficult: ['easy', 'medium', 'hard'].shuffle.first
+                solved_grid: Array.new(81) {rand(1..9).to_s}.join(''),
+                puzzle_grid: Array.new(81) {rand(1..9).to_s}.join(''),
+                difficulty: ['easy', 'medium', 'hard'].shuffle.first
             )
         end
         puts "Created #{Grid.count} example grids."
