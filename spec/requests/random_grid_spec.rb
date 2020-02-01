@@ -5,9 +5,9 @@ describe 'GET /grids/random', :type => :request do
         srand(12345)
         #it's technically possible for this to fail if the same grid is randomly picked twice
         get '/grids/random'
-        grid_one = JSON.parse(response.body)['solved_grid']
+        grid_one = JSON.parse(response.body)['puzzle_grid']
         get '/grids/random'
-        grid_two = JSON.parse(response.body)['solved_grid']
+        grid_two = JSON.parse(response.body)['puzzle_grid']
 
         expect(grid_one).not_to eq grid_two
         expect(response).to have_http_status 200

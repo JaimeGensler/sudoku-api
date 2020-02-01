@@ -23,6 +23,7 @@ describe 'POST /grids', :type => :request do
             }
 
             expect(JSON.parse(response.body)['message']).to eq 'Validation failed: Puzzle grid is the wrong length (should be 81 characters), Solved grid is the wrong length (should be 81 characters)'
+            expect(response).to have_http_status 422
         end
     end
 end

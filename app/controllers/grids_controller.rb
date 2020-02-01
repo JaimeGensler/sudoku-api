@@ -1,6 +1,14 @@
 class GridsController < ApplicationController
     def index
-        json_response(Grid.all)
+        if params[:difficulty].nil?
+            json_response(Grid.all)
+        else
+            unless ['easy', 'medium', 'hard'].include?(params[:difficulty])
+                render status: 400, json: {message: 'No such difficulty rating.'}
+            else
+                json_response(Grid.with_difficulty(params[:difficulty]))
+            end
+        end
     end
 
     def show
@@ -8,7 +16,15 @@ class GridsController < ApplicationController
     end
 
     def random
-        json_response(Grid.random)
+        if params[:difficulty].nil?
+            json_response(Grid.random)
+        else
+            unless ['easy', 'medium', 'hard'].include?(params[:difficulty])
+                render status: 400, json: {message: 'No such difficulty rating.'}
+            else
+                json_response(Grid.with_difficulty(params[:difficulty]).random)
+            end
+        end
     end
 
     def create
