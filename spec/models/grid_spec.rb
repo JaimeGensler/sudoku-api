@@ -17,7 +17,6 @@ describe Grid do
             srand(12345)
             expect(Grid.random).to be_an_instance_of Grid
             expect(Grid.random.solved_grid).not_to eq(Grid.random.solved_grid)
-            #it's technically possible for this test to fail if it randomly pics the same grid twice in a row, but this is unlikely with a large enough database
         end
         it '.with_difficulty should return grid(s) with a certain difficulty' do
             set = Grid.with_difficulty('easy')
