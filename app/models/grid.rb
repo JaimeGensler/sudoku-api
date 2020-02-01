@@ -4,4 +4,10 @@ class Grid < ApplicationRecord
     validates :difficulty, presence: true
 
     scope :random, -> { offset(rand(Grid.count)).first }
+    scope :all_by_difficulty, -> (difficulty) { where(difficulty: difficulty) }
+    scope :random_by_difficulty, -> (difficulty) {
+        where(difficulty: difficulty)
+        .order('RANDOM()')
+        .first
+    }
 end

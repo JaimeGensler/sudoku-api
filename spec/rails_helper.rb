@@ -62,6 +62,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
     config.before(:suite) do |test|
+        srand(321)
         Rails.application.load_seed
     end
 end
