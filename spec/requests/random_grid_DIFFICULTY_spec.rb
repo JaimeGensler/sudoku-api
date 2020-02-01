@@ -5,11 +5,13 @@ describe 'GET /grids/random?difficulty=', :type => :request do
         it 'returns [a random grid of specified difficulty, status code 200]' do
             srand(12345)
             get '/grids/random?difficulty=medium'
-            grid_one = JSON.parse(response.body)['puzzle_grid']
+            grid_one = JSON.parse(response.body)
             get '/grids/random?difficulty=medium'
-            grid_two = JSON.parse(response.body)['puzzle_grid']
+            grid_two = JSON.parse(response.body)
 
-            expect(grid_one).not_to eq grid_two
+            expect(grid_one['puzzle_grid']).not_to eq grid_two['puzzle_grid']
+            expect(grid_one['difficulty']).to eq 'medium'
+            expect(grid_two['difficulty']).to eq 'medium'
             expect(response).to have_http_status 200
         end
     end
