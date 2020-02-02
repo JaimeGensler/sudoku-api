@@ -11,7 +11,7 @@ This Sudoku API (run on local host) is designed to allow you to request a standa
 * #### GET /api/v1/grids
 	* This request will return a list of ALL grids. You can add the difficulty option ( /api/v1/grids?difficulty=easy ) to get grids of differing difficulties. Currently, the only accepted difficulties are "easy," "medium," and "hard."
 * #### GET /api/v1/grids/:id
-	* By supplying an ID parameter, this request will return the grid that matches the specified ID. _Does not currently take additional options._
+	* By supplying an ID to the route, this request will return the grid that matches the specified ID. _Does not currently take additional options._
 * #### GET /api/v1/grids/random
 	* This request will randomly return one grid. The difficulty option (api/v1/grids/random?difficulty=easy) can be added to also request a random grid of the specified difficulty.
 * #### POST /api/v1/grids
