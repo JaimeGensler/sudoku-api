@@ -24,4 +24,13 @@ describe Grid do
             expect(Grid.with_difficulty('hard').random).not_to eq Grid.with_difficulty('hard').random
         end
     end
+
+    context '(methods)' do
+        it '#with_arrays will return the object with arrays' do
+            grid = Grid.random.with_arrays
+            expect(grid.solved_grid_array.length).to eq 9
+            expect(grid.puzzle_grid_array.length).to eq 9
+            expect(grid.solved_grid_array[0].length).to eq 9
+        end
+    end
 end
