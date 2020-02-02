@@ -8,7 +8,7 @@ describe 'GET /grids/:id', :type => :request do
                 puzzle_grid: "#{'0' * 81}",
                 difficulty: 'easy'
             )
-            get "/grids/#{grid.id}"
+            get "/api/v1/grids/#{grid.id}"
 
             expect(JSON.parse(response.body)['solved_grid']).to eq "#{'2' * 81}"
             expect(response).to have_http_status 200
@@ -17,7 +17,7 @@ describe 'GET /grids/:id', :type => :request do
 
     context '(bad request)' do
         it 'returns [error message, status code 404]' do
-            get '/grids/0'
+            get '/api/v1/grids/0'
 
             expect(JSON.parse(response.body)['message']).to eq 'Couldn\'t find Grid with \'id\'=0'
             expect(response).to have_http_status 404

@@ -8,7 +8,7 @@ describe 'PUT /grids/:id', :type => :request do
                 puzzle_grid: "#{'0' * 81}",
                 difficulty: 'hard'
             )
-            put "/grids/#{grid.id}", params: {
+            put "/api/v1/grids/#{grid.id}", params: {
                 solved_grid: "#{'2' * 81}",
                 puzzle_grid: "#{'1' * 81}",
                 difficulty: 'easy'
@@ -20,7 +20,7 @@ describe 'PUT /grids/:id', :type => :request do
     end
     context '(bad requests)' do
         it 'updating non-existent grid: returns [error message, status code 404]' do
-            put '/grids/0', params: {
+            put '/api/v1/grids/0', params: {
                 solved_grid: "#{'2' * 81}",
                 puzzle_grid: "#{'0' * 81}",
                 difficulty: 'medium'
@@ -36,7 +36,7 @@ describe 'PUT /grids/:id', :type => :request do
                 puzzle_grid: "#{'9' * 81}",
                 difficulty: 'hard'
             )
-            put "/grids/#{grid.id}", params: {
+            put "/api/v1/grids/#{grid.id}", params: {
                 solved_grid: "#{'0' * 40}",
                 puzzle_grid: "#{'0' * 40}",
                 difficulty: ''

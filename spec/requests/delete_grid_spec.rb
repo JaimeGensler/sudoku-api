@@ -8,7 +8,7 @@ describe 'DELETE /grids/:id', :type => :request do
                 puzzle_grid: "#{'0' * 81}",
                 difficulty: 'easy'
             )
-            delete "/grids/#{grid.id}"
+            delete "/api/v1/grids/#{grid.id}"
 
             expect(JSON.parse(response.body)['message']).to eq 'This Grid has been successfully destroyed.'
             expect(response).to have_http_status 200
@@ -17,7 +17,7 @@ describe 'DELETE /grids/:id', :type => :request do
 
     context '(bad request)' do
         it 'returns [error message, status code 404]' do
-            delete '/grids/0'
+            delete '/api/v1/grids/0'
 
             expect(JSON.parse(response.body)['message']).to eq 'Couldn\'t find Grid with \'id\'=0'
             expect(response).to have_http_status 404

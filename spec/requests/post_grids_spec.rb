@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'POST /grids', :type => :request do
     context '(valid request)' do
         it 'returns [success message, status code 201]' do
-            post '/grids', params: {
+            post '/api/v1/grids', params: {
                 solved_grid: "#{'2' * 81}",
                 puzzle_grid: "#{'0' * 81}",
                 difficulty: 'medium'
@@ -16,7 +16,7 @@ describe 'POST /grids', :type => :request do
 
     context '(bad request)' do
         it 'returns [error message, status code 422]' do
-            post '/grids', params: {
+            post '/api/v1/grids', params: {
                 solved_grid: "0123456789",
                 puzzle_grid: "0105105010",
                 difficulty: 'medium'
